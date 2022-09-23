@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MVCApp.Models.TiketPesawat>
+
+@{
+    ViewData["Title"] = "Tiket Pesawat";
+}
+
+<h1>Data Tiket Pesawat Perjalanan Dinas</h1>
+<p>
+    Data berdasarkan data pada Standar Biaya Masukan Tahun 2022
+</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nomor
+            </th>
+            <th>
+                Rute Awal 
+            </th>
+            <th>
+                Rute Tujuan
+            </th>
+            <th>
+                Harga
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ruteAwal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ruteTujuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.harga)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

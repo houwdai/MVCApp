@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVCApp.Models.Pegawai>
+
+@{
+    ViewData["Title"] = "Pegawai";
+}
+
+<h1>Data Pegawai Kantor</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Nomor
+            </th>
+            <th>
+                Nama Pegawai
+            </th>
+            <th>
+                NIP Pegawai
+            </th>
+            <th>
+                Jabatan Pegawai
+            </th>
+            <th>
+               Golongan Pegawai
+            </th>
+            <th>
+                Action
+             </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idPegawai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.namePegawai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nipPegawai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jabatanPegawai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.golonganPegawai)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.idPegawai">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.idPegawai">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.idPegawai">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    Lihat informasi mengenai peraturan dana dari kementerian keuangan 2022 di link berikut 
+    <a asp-controller="Representasi" asp-action="Index" asp-route-id="">Representasi</a> |
+    <a asp-controller="Tiket" asp-action="Index" asp-route-id="">Tiket Pesawat</a> |
+    <a asp-controller="UangHarian" asp-action="Index" asp-route-id="">Uang Harian</a>
+</p>

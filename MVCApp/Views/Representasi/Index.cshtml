@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MVCApp.Models.Representasi>
+
+@{
+    ViewData["Title"] = "Representasi";
+}
+
+<h1>SATUAN BIAYA UANG REPRESENTASI PERJALANAN DINAS</h1>
+<p>
+    Data berdasarkan data Standar Biaya Masukan Tahun 2022
+</p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Keterangan Jabatan
+            </th>
+            <th>
+              Luar Kota
+            </th>
+            <th>
+               Dalam Kota
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.uraian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.luarkota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dalamkota)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
