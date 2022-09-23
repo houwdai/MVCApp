@@ -1,6 +1,6 @@
 ﻿namespace MVCApp.Models
 {
-    public class Harian
+    public class UangHarian
     {
         public int Id { get; set; }
         public string provinsi { get; set; }

@@ -15,5 +15,6 @@ namespace MVCApp.Data
         }
         public DbSet<MVCApp.Models.Representasi> Representasi { get; set; }
         public DbSet<MVCApp.Models.TiketPesawat> TiketPesawat { get; set; }
+        public DbSet<MVCApp.Models.UangHarian> UangHarian { get; set; }
     }
 }
