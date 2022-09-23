@@ -2,7 +2,7 @@
     Perkembangan MVC 23/9/22
 </h2>
 
-<li>View Pegawai</li>
-<li>View Tiket Pesawat</li>
-<li>View Uang Representasi</li>
-<li>View Uang Harian</li>
+<li>Read Pegawai</li>
+<li>Read Tiket Pesawat</li>
+<li>Read Uang Representasi</li>
+<li>Read Uang Harian</li>
