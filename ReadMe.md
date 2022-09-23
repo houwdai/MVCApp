@@ -3,6 +3,8 @@
 </h2>
 
 <li>Read Pegawai</li>
+<li>Create Pegawai</li>
 <li>Read Tiket Pesawat</li>
 <li>Read Uang Representasi</li>
 <li>Read Uang Harian</li>
+
