@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using MVCApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Reflection;
 
 namespace MVCApp.Controllers
@@ -53,56 +55,38 @@ namespace MVCApp.Controllers
             return View(pegawailist);
         }
 
-        
+
         //GET: /CreatePegawai
-        public IActionResult Create()
+        public IActionResult Create ()
         {
-            using SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-3EQ7S2P;Initial Catalog=SuratPerjalananDinass;Integrated Security=True");
-            {
-                Pegawai pegawai = new Pegawai();
-                sqlConnection.Open();
-                SqlTransaction sqlTransaction = sqlConnection.BeginTransaction();
-                SqlCommand cmd = sqlConnection.CreateCommand();
-                cmd.Transaction = sqlTransaction;
-
-                SqlParameter sqlParameter = new SqlParameter();
-                sqlParameter.ParameterName = "@nama";
-                sqlParameter.Value = pegawai.namePegawai;
-                cmd.Parameters.Add(sqlParameter);
-
-                SqlParameter sqlParameter2 = new SqlParameter();
-                sqlParameter2.ParameterName = "@nip";
-                sqlParameter2.Value = pegawai.nipPegawai;
-                cmd.Parameters.Add(sqlParameter2);
-
-
-                SqlParameter sqlParameter3 = new SqlParameter();
-                sqlParameter3.ParameterName = "@jabatan";
-                sqlParameter3.Value = pegawai.jabatanPegawai;
-                cmd.Parameters.Add(sqlParameter3);
-
-                SqlParameter sqlParameter4 = new SqlParameter();
-                sqlParameter4.ParameterName = "@golongan";
-                sqlParameter4.Value = pegawai.golonganPegawai;
-                cmd.Parameters.Add(sqlParameter4);
-                try
-                {
-                    cmd.CommandText = "INSERT INTO pegawai " + "(namaPegawai, nipPegawai, jabatanPegawai, golonganPegawai) " +
-                        "values (@nama, @nip, @jabatan, @golongan)";
-
-                    cmd.ExecuteNonQuery();
-                    sqlTransaction.Commit();
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.InnerException);
-                }
-            }
-            return View();
-
+            return View(new Pegawai());
         }
 
+        [HttpPost]
+        // POST : /Create/Pegawai
+        public IActionResult Create (Pegawai pegawaii)
+        {
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=DESKTOP-3EQ7S2P;Initial Catalog=SuratPerjalananDinass;Integrated Security=True");
+
+            SqlCommand com = new SqlCommand("AddPegawai", sqlConnection);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@namaPegawai", pegawaii.namePegawai);
+            com.Parameters.AddWithValue("@nipPegawai", pegawaii.nipPegawai);
+            com.Parameters.AddWithValue("@jabatanPegawai", pegawaii.jabatanPegawai);
+            com.Parameters.AddWithValue("@golonganPegawai", pegawaii.golonganPegawai);
+
+            sqlConnection.Open();
+            int i = com.ExecuteNonQuery();
+            sqlConnection.Close();
+            if (i >= 1)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return ViewBag.Message = "Pegawai Gagal Ditambah"; ;
+            }
+        }
         public IActionResult Delete(int id)
         {
             using SqlConnection sqlConnection = new SqlConnection(connectionString);
