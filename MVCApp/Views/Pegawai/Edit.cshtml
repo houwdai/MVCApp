@@ -1,0 +1,49 @@
+﻿@model MVCApp.Models.Pegawai
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Edit Data Pegawai</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="idPegawai" />
+            <div class="form-group">
+                <label asp-for="namePegawai" class="control-label"></label>
+                <input asp-for="namePegawai" class="form-control" value="@ViewData["namePegawai"]"/>
+                <span asp-validation-for="namePegawai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nipPegawai" class="control-label"></label>
+                <input asp-for="nipPegawai" class="form-control" value="@ViewData["nipPegawai"]" />
+                <span asp-validation-for="nipPegawai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="jabatanPegawai" class="control-label"></label>
+                <input asp-for="jabatanPegawai" class="form-control" value="@ViewData["jabatanPegawai"]" />
+                <span asp-validation-for="jabatanPegawai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="golonganPegawai" class="control-label"></label>
+                <input asp-for="golonganPegawai" class="form-control" value="@ViewData["golonganPegawai"]" />
+                <span asp-validation-for="golonganPegawai" class="text-danger"></span>
+            </div>
+            <div class="form-group">    
+                <input type="submit" value="save" class="btn btn-primary" action="UpdateData"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

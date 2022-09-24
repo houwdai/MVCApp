@@ -63,6 +63,9 @@ namespace MVCApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Pegawai}/{action=Index}");
+                endpoints.MapControllerRoute(
+                    name: "Edit Pegawai",
+                    pattern: "{controller=Pegawai}/{action=Edit}/{idPegawai?}");
                 endpoints.MapRazorPages();
             });
 
