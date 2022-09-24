@@ -1,5 +1,5 @@
 <h2>
-    Perkembangan MVC 23/9/22
+    Perkembangan MVC 24/9/22
 </h2>
 
 <li>Read Pegawai</li>
