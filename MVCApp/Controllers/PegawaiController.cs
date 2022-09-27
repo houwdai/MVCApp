@@ -26,10 +26,20 @@ namespace MVCApp.Controllers
 
         public IActionResult Index()
         {
-            var data = myContext.Pegawaii.ToList();
+            var data = myContext.Pegawaii.Include(x => x.Golongan).ToList();
             return View(data);
         }
+        //Read By ID
+        //GET
+        [HttpGet("Details/{id:int}")]
+        public IActionResult Details(int id)
+        {
+            //Employee employee = myContext.Employees.Find(id);
+            var employee = myContext.Pegawaii.Where(x => x.idPegawai == id).Include(x => x.Golongan).FirstOrDefault();
+            
 
+            return View(employee);
+        }
         public IActionResult Create()
         {
             return View(new Pegawai());
@@ -57,7 +67,7 @@ namespace MVCApp.Controllers
             ViewData["namePegawai"] = reader.namePegawai;
             ViewData["nipPegawai"] = reader.nipPegawai;
             ViewData["jabatanPegawai"] = reader.jabatanPegawai;
-            ViewData["golonganPegawai"] = reader.golonganPegawai;
+            ViewData["golonganPegawai"] = reader.IdGolongan;
             return View();
         }
 
@@ -67,10 +77,12 @@ namespace MVCApp.Controllers
 
         public IActionResult Edit(Pegawai pegawai)
         {
-            myContext.Pegawaii.UpdateRange();
+            myContext.Pegawaii.Update(pegawai);
             myContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
         [HttpGet("Delete/{id:int}")]
 

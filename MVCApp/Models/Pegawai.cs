@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,7 +16,14 @@ namespace MVCApp.Models
         [DisplayName("Jabatan Pegawai")]
         public string jabatanPegawai { get; set; }
         [DisplayName("Golongan Pegawai")]
+
+        public Golongan Golongan { get; set; }
         [ForeignKey("Golongan")]
-        public int golonganPegawai { get; set; }
+        public int IdGolongan { get; set; }
+
+        internal object Include(Func<object, object> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

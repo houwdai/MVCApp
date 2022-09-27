@@ -49,9 +49,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.jabatanPegawai)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.golonganPegawai)
+                <td class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Golongan.NamaGolongan)
                 </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.idPegawai">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.idPegawai">Details</a> |
