@@ -1,0 +1,6 @@
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.csproj.AssemblyReference.cache
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.AssemblyInfoInputs.cache
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.AssemblyInfo.cs
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+C:\Users\Cindi Tri Fitikasari\source\repos\MVCApp\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
