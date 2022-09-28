@@ -60,7 +60,7 @@ namespace API.Controllers
         {
             if (ModelState.IsValid)
             {
-                myContext.Pegawaii.Add(Pegawai);
+                myContext.Pegawaii.Add(pegawai);
                 var result = myContext.SaveChanges();    
                 if (result >0 )
                     //return RedirectToAction("Index");

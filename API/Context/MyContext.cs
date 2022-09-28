@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MVCApp.Models;
+using API.Models;
 
 namespace MVCApp.Context
 {
