@@ -1,12 +1,13 @@
 ﻿using API.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 using API.Context;
+using API.Models;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace API.Repositories.Data
 {
-    public class Pegawai : IPegawaiRepository
+    public class PegawaiRepository : IPegawaiRepository
     {
         MyContext myContext;
 
@@ -18,7 +19,7 @@ namespace API.Repositories.Data
             return result;
         }
 
-        public List<Models.Pegawai> Get()
+        public List<Pegawai> Get()
         {
             var data = myContext.Pegawaii.Include(x => x.Golongan).ToList();
             return data;
@@ -30,7 +31,7 @@ namespace API.Repositories.Data
             return employee;
         }
 
-        public int Post(Models.Pegawai pegawai)
+        public int Post(Pegawai pegawai)
         {
 
             myContext.Pegawaii.Add(pegawai);
@@ -38,10 +39,15 @@ namespace API.Repositories.Data
             return result;
         }
 
-        public int Put(Models.Pegawai pegawai)
+        public int Put(Pegawai pegawai)
         {
             var data = GetById(pegawai.idPegawai);
-            myContext.Pegawaii.Update(pegawai);
+            data.idPegawai = pegawai.idPegawai;
+            data.nipPegawai = pegawai.nipPegawai;
+            data.namePegawai = pegawai.namePegawai;
+            data.jabatanPegawai= pegawai.jabatanPegawai;
+            data.IdGolongan  = pegawai.IdGolongan;
+            myContext.Pegawaii.Update(data);
             var result = myContext.SaveChanges();
             return result;
 

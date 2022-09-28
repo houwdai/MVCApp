@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using API.Models;
 
-namespace MVCApp.Context
+namespace API.Context
 {
     public class MyContext:DbContext
     {
@@ -11,6 +11,7 @@ namespace MVCApp.Context
         }
         public DbSet<Pegawai> Pegawaii { get; set; }
         public DbSet<Golongan> Golongans { get; set; }
+
 
         //public DbSet<TiketPesawat> TiketPesawat { get; set; }
         //public DbSet<UangHarian> UangHarian { get; set; }
