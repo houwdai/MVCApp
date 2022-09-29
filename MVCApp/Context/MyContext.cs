@@ -15,5 +15,8 @@ namespace MVCApp.Context
         public DbSet<TiketPesawat> TiketPesawat { get; set; }
         public DbSet<UangHarian> UangHarian { get; set; }
         public DbSet<Representasi> Represtasis { get; set; }
+
+        public DbSet<Admin> Admin { get; set; }
+
     }
 }
