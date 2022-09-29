@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using API.Repositories.Data;
 
 namespace API
 {
@@ -57,7 +57,8 @@ namespace API
 
             #region Dependency Injection
 
-            //services.AddScoped<IPegawaiRepository()>();
+            services.AddScoped < PegawaiRepository>();
+            services.AddScoped < AccountRepository>();
             //services.AddScoped<DepartmentRepository>();
 
             #endregion Dependency Injection

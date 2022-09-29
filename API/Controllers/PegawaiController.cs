@@ -16,40 +16,24 @@ namespace API.Controllers
     public class PegawaiController : ControllerBase
     {
         PegawaiRepository pegawaiRepository;
-        MyContext myContext;
 
-        //public PegawaiController(PegawaiRepository pegawaiRepository)
-        //{
-        //    this.pegawaiRepository = pegawaiRepository;
-        //}
-        public PegawaiController(MyContext myContext)
+        public PegawaiController(PegawaiRepository pegawaiRepository)
         {
-            this.myContext = myContext;
+            this.pegawaiRepository = pegawaiRepository;
         }
+
 
         //GET ALL DATA
         [HttpGet]
         public IActionResult Index()
         {
-            var data = myContext.Pegawaii.ToList();
-            if (data.Count == 0)
-                return Ok(new { message = "Sukses mengambil data", StatusCode = 200, data = "null" });
+            var data = pegawaiRepository.Get();
+            if (data.Count == 0) 
+                return Ok(new {message = "Sukses mengambil data", StatusCode = 200, data = "null"});
             return Ok(new { message = "Sukses mengambil data", StatusCode = 200, data = data });
 
             //return View(data);
         }
-
-        //GET ALL DATA
-        //[HttpGet]
-        //public IActionResult Index()
-        //{
-        //    var data = pegawaiRepository.Get();
-        //    if (data.Count == 0) 
-        //        return Ok(new {message = "Sukses mengambil data", StatusCode = 200, data = "null"});
-        //    return Ok(new { message = "Sukses mengambil data", StatusCode = 200, data = data });
-
-        //    //return View(data);
-        //}
         //GET DATA BY ID
         //GET
         [HttpGet("Details/{id:int}")]

@@ -21,7 +21,7 @@ namespace API.Repositories.Data
 
         public List<Pegawai> Get()
         {
-            var data = myContext.Pegawaii.Include(x => x.Golongan).ToList();
+            var data = myContext.Pegawaii.ToList();
             return data;
         }
 
